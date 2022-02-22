@@ -52,6 +52,7 @@ httpstan==4.7.0
 idna==3.3
 importlib-metadata==4.11.1
 importlib-resources==5.4.0
+iniconfig==1.1.1
 ipykernel==6.9.1
 ipython==8.0.1
 ipython-genutils==0.2.0
@@ -100,11 +101,13 @@ pickleshare==0.7.5
 Pillow==9.0.1
 platformdirs==2.5.0
 plotly==5.6.0
+pluggy==1.0.0
 prometheus-client==0.13.1
 prompt-toolkit==3.0.28
 protobuf==3.19.4
 ptyprocess==0.7.0
 pure-eval==0.2.2
+py==1.11.0
 pyarrow==7.0.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
@@ -118,6 +121,7 @@ pyparsing==3.0.7
 pyrsistent==0.18.1
 pysimdjson==3.2.0
 pystan==3.4.0
+pytest==7.0.1
 python-dateutil==2.8.2
 pytz==2021.3
 pytz-deprecation-shim==0.1.0.post0

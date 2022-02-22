@@ -135,8 +135,8 @@ original_stock_price = [y for y in x[split_point:][price_of_choice]]
 def plot_combined_figures():
     layout = go.Layout(showlegend=True)
     fig = go.Figure(layout=layout)
-    fig.add_trace(go.Scatter(x=data.index, y=original_stock_price, name="Actual stock price trajectory"))
-    fig.add_trace(go.Scatter(x=data.index, y=test_predict, name="Predicted stock price trajectory"))
+    fig.add_trace(go.Scatter(x=data.index[split_point:], y=original_stock_price, name="Actual stock price trajectory"))
+    fig.add_trace(go.Scatter(x=data.index[split_point:], y=test_predict, name="Predicted stock price trajectory"))
     fig.layout.update(title_text="Combined plot for actual and predicted values", xaxis_rangeslider_visible=True)
     fig.update_layout(
         width=1000,
