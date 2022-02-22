@@ -2,9 +2,6 @@ import streamlit as st
 from datetime import date
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import requests
-import pandas_datareader
 import yfinance as yf
 from plotly import graph_objs as go
 import keras
@@ -24,7 +21,7 @@ selected_stock = st.selectbox("Select the stock/financial instrument of choice:"
 price_types = ('Open','High','Low','Close')
 price_of_choice = st.selectbox("Select the price of choice(Close price is recommended):",price_types)
 
-@st.cache
+#@st.cache
 def load_data(ticker):
     data = yf.download(ticker,START,TODAY)
     data['% Returns'] = data[price_of_choice].pct_change()  # we find the percentage change using the pct_change() method
