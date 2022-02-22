@@ -48,7 +48,7 @@ grpcio==1.44.0
 h5py==3.6.0
 hijri-converter==2.2.3
 holidays==0.13
-httpstan==4.7.0
+httpstan<4.7.0
 idna==3.3
 importlib-metadata==4.11.1
 importlib-resources==5.4.0
