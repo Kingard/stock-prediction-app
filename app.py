@@ -12,7 +12,7 @@ from sklearn.preprocessing import MinMaxScaler
 START = '2015-01-01'
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.title("Stock price prediction system by Kingard")
+st.title("Stock price prediction system by Kingard for Datatonic")
 stocks = ('AAPL','TSLA','MSFT','AMZN','BTC-USD','ETH-USD','XRP-USD','BCH-USD')
 selected_stock = st.selectbox("Select the stock/financial instrument of choice:",stocks)
 #period = n_years * 365  # in days
