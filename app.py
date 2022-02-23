@@ -21,6 +21,7 @@ selected_stock = st.selectbox("Select the stock/financial instrument of choice:"
 price_types = ('Open','High','Low','Close')
 price_of_choice = st.selectbox("Select the price of choice(Close price is recommended):",price_types)
 
+
 #@st.cache
 def load_data(ticker):
     data = yf.download(ticker,START,TODAY)
@@ -30,12 +31,18 @@ def load_data(ticker):
     return data
 
 
-data_load_status = st.text("loading data...")
-data = load_data(selected_stock)
-data_load_status = st.text("loading data...Done!")
+action = st.button('load data')
 
-st.subheader('Raw data')
-st.write(data.tail())
+data = load_data(selected_stock)
+
+if action:
+    st.subheader('Raw data')
+    data_load_status = st.text("loading data...")
+    data_load_status = st.text("loading data...Done!")
+    st.write(data.tail())
+
+else:
+    st.write("Click the button above to preview the data")
 
 
 # Here we plot the raw data to have a sense of what it looks like
@@ -54,7 +61,11 @@ def plot_data():
 
 
 # data_plot_button_val = st.button('plot data', key=None, help=None, on_click=plot_data())
-plot_data()
+plot_data_action = st.button('plot the data')
+if plot_data_action:
+    plot_data()
+else:
+    st.write("Click the button above to plot the ingested data")
 
 
 # Here we plot the log returns and see if it mean-reverts at 0
@@ -69,14 +80,20 @@ def plot_extracted_data():
     )
     st.plotly_chart(fig)
 
-plot_extracted_data()
+
+plot_fe_data_action = st.button('plot the log returns')
+if plot_fe_data_action:
+    plot_extracted_data()
+else:
+    st.write("Click the button above to plot the log returns")
 
 
-#x = data[['Close','Log returns']]
+# x = data[['Close','Log returns']]
 # price_types = ('Open','High','Low','Close')
 # price_of_choice = st.selectbox("Select the stock of choice(Close price is recommended):",price_types)
 
 
+# Data seggregation: Here we're splitting the data into train and test data
 x = data[[price_of_choice,'Log returns']]
 scaler = MinMaxScaler(feature_range=(0,1)).fit(x)
 x_scaled = scaler.transform(x)
@@ -106,10 +123,8 @@ Xtest, ytest = np.array(Xtest), np.array(ytest)
 Xtest = np.reshape(Xtest,(Xtest.shape[0],Xtest.shape[1],Xtest.shape[2]))
 
 
+# Loading the model saved in the .h5 file
 model = load_model('keras_model.h5')
-model_load_status = st.text("loading data.")
-model_load_status = st.text("loading data..")
-model_load_status = st.text("loading data...")
 
 
 # Prediction phase
@@ -144,4 +159,11 @@ def plot_combined_figures():
     )
     st.plotly_chart(fig)
 
-plot_combined_figures()
+
+load_prediction_action = st.button("load prediction")
+if load_prediction_action:
+    st.write("loading data.")
+    st.write("loading data..")
+    plot_combined_figures()
+else:
+    st.write("Click the button above to load the prediction")
