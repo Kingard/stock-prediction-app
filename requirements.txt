@@ -120,7 +120,7 @@ Pympler==1.0.1
 pyparsing==3.0.7
 pyrsistent==0.18.1
 pysimdjson==3.2.0
-pystan==3.4.0
+pystan<3.4.0
 pytest==7.0.1
 python-dateutil==2.8.2
 pytz==2021.3
